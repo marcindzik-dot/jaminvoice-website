@@ -154,15 +154,22 @@ body {
 /* Drifting Astronaut (Flat vector icon matching currency icons) */
 .drifting-astronaut {
     position: fixed;
-    font-size: 80px; /* Big premium vector representation */
-    color: rgba(0, 200, 255, 0.14); /* soft glow neon cyan */
-    text-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
-    left: 10%;
-    top: 40%;
+    width: 60px; /* Small, floating like the currency icons */
+    height: auto;
+    color: rgba(0, 200, 255, 0.15); /* soft glow neon cyan */
+    left: 15%;
+    top: 45%;
     z-index: -1;
     pointer-events: none;
     user-select: none;
     animation: astronaut-drift 35s infinite linear;
+    filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
+}
+
+.astronaut-svg {
+    width: 100%;
+    height: auto;
+    fill: currentColor;
 }
 
 /* Shooting Stars Background (falling stars) */
