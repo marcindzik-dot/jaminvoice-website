@@ -29,6 +29,22 @@
         <div class="star star-6"></div>
     </div>
 
+    <!-- Floating Background Particles (Drifting across the entire page) -->
+    <div class="background-particles">
+        <div class="bg-particle bp-1">$</div>
+        <div class="bg-particle bp-2">€</div>
+        <div class="bg-particle bp-3">£</div>
+        <div class="bg-particle bp-4">zł</div>
+        <div class="bg-particle bp-5">$</div>
+        <div class="bg-particle bp-6">€</div>
+        <div class="bg-particle bp-7">£</div>
+        <div class="bg-particle bp-8">zł</div>
+        <div class="bg-particle bp-9">$</div>
+        <div class="bg-particle bp-10">€</div>
+        <div class="bg-particle bp-11">£</div>
+        <div class="bg-particle bp-12">zł</div>
+    </div>
+
     <!-- Drifting Astronaut -->
     <div class="drifting-astronaut">
         <img src="assets/images/astronaut.png" alt="Astronaut floating in space">
@@ -65,50 +81,41 @@
         <a href="#download" class="btn btn-primary">Get App</a>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Centered Layout matching App HomeScreen) -->
     <section class="hero">
-        <div class="container hero-cols-container">
-            <div class="hero-text-side">
-                <!-- Currency symbols floating banner -->
-                <div class="currency-banner">
-                    <span class="currency-tag tag-purple"><i class="fa-solid fa-dollar-sign"></i> USD</span>
-                    <span class="currency-tag tag-blue"><i class="fa-solid fa-sterling-sign"></i> GBP</span>
-                    <span class="currency-tag tag-cyan"><i class="fa-solid fa-euro-sign"></i> EUR</span>
-                    <span class="currency-tag tag-purple">zł PLN</span>
-                </div>
-
-                <h1 class="hero-title-left">
-                    Professional Invoicing <br>
-                    <span class="gradient-text">for Small Businesses, Freelancers & Growing Companies</span>
-                </h1>
-                
-                <p class="hero-subtitle-left">
-                    100% Offline. GDPR Compliant. Serverless Device Sync. <br>
-                    Take absolute control of your client records and billing invoices, straight from your device.
-                </p>
-
-                <div class="hero-cta-left" id="download">
-                    <a href="#download-windows" class="btn btn-primary btn-lg"><i class="fa-brands fa-windows"></i> Download for Windows</a>
-                    <a href="#download-android" class="btn btn-secondary btn-lg"><i class="fa-brands fa-android"></i> Get for Android</a>
-                </div>
-            </div>
-
-            <div class="hero-visual-side">
-                <!-- Glowing globe with drifting currencies -->
-                <div class="globe-wrapper">
-                    <div class="globe-radial-glow"></div>
-                    <img src="assets/images/globe.png" alt="JamInvoice Earth Globe" class="globe-img-floating">
-                    <!-- Floating currencies around globe -->
-                    <div class="drifting-symbol symbol-1">$</div>
-                    <div class="drifting-symbol symbol-2">€</div>
-                    <div class="drifting-symbol symbol-3">£</div>
-                    <div class="drifting-symbol symbol-4">zł</div>
-                </div>
-            </div>
+        <!-- Giant Globe in Background of Hero -->
+        <div class="hero-globe-bg">
+            <div class="globe-overlay-glow"></div>
+            <img src="assets/images/globe.png" alt="Earth Globe Background" class="globe-bg-img">
         </div>
 
-        <div class="container">
-            <!-- Dashboard Preview Container -->
+        <div class="container hero-centered-content">
+            <!-- 1. Currency Icon Graphic (top) -->
+            <img src="assets/images/logo_currency_icon.png" alt="JamInvoice Currencies Logo" class="app-logo-currencies">
+            
+            <!-- 2. Brand name title -->
+            <h2 class="app-brand-name">JamInvoice</h2>
+            
+            <!-- 3. Tagline (crisp glowing cyan) -->
+            <div class="app-tagline">INVOICES &bull; ESTIMATES &bull; ANYWHERE</div>
+            
+            <!-- 4. Checkmark Icon Graphic (bottom logo part) -->
+            <img src="assets/images/logo_checkmark_icon.png" alt="JamInvoice Checkmark Logo" class="app-logo-checkmark">
+
+            <!-- 5. Main Welcome Title -->
+            <h1 class="hero-title">
+                Professional Invoicing
+            </h1>
+            <p class="hero-subtitle">
+                For Small Businesses, Freelancers & Growing Companies
+            </p>
+
+            <div class="hero-cta" id="download">
+                <a href="#download-windows" class="btn btn-primary btn-lg"><i class="fa-brands fa-windows"></i> Download for Windows</a>
+                <a href="#download-android" class="btn btn-secondary btn-lg"><i class="fa-brands fa-android"></i> Get for Android</a>
+            </div>
+
+            <!-- Workspace Preview Dashboard -->
             <div class="hero-preview">
                 <div class="preview-header">
                     <span class="dot red"></span>
