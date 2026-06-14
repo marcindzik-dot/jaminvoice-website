@@ -1,143 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JamInvoice</title>
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-background:linear-gradient(180deg,#02051f,#050b38,#02051f);
-color:white;
-}
-
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:40px 20px;
-}
-
-.logo{
-width:180px;
-margin-bottom:20px;
-}
-
-h1{
-font-size:4rem;
-margin-bottom:10px;
-}
-
-.tagline{
-color:#00d4ff;
-letter-spacing:4px;
-margin-bottom:30px;
-}
-
-.subtitle{
-font-size:1.4rem;
-margin-bottom:40px;
-max-width:700px;
-}
-
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-width:100%;
-max-width:1000px;
-margin-bottom:50px;
-}
-
-.feature{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:20px;
-border:1px solid rgba(0,212,255,0.2);
-}
-
-.feature h3{
-margin-bottom:10px;
-color:#00d4ff;
-}
-
-.button{
-display:inline-block;
-padding:18px 40px;
-background:linear-gradient(90deg,#6f3cff,#00d4ff);
-color:white;
-text-decoration:none;
-font-size:1.2rem;
-font-weight:bold;
-border-radius:50px;
-}
-
-.footer{
-padding:30px;
-text-align:center;
-color:#999;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JamInvoice | Premium Offline Invoicing for Small Businesses & Freelancers</title>
+    <meta name="description" content="Professional Invoicing for Small Businesses, Freelancers & Growing Companies. 100% Offline, GDPR compliant, with serverless device sync.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <!-- Deep Space Background & Glow Orbs -->
+    <div class="space-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
-<section class="hero">
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="assets/images/app_icon.png" alt="JamInvoice Logo" class="logo-img">
+                <span class="logo-text">Jam<span class="highlight">Invoice</span></span>
+            </a>
+            <nav class="nav">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#download" class="btn btn-primary btn-sm">Get App <i class="fa-solid fa-download"></i></a>
+            </div>
+            <button class="mobile-menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
-<h1>JamInvoice</h1>
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features" class="mobile-link">Features</a>
+        <a href="#faq" class="mobile-link">FAQ</a>
+        <a href="#roadmap" class="mobile-link">Roadmap</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#download" class="btn btn-primary">Get App</a>
+    </div>
 
-<p class="tagline">
-INVOICES • ESTIMATES • ANYWHERE
-</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <!-- Currency symbols floating banner -->
+            <div class="currency-banner">
+                <span class="currency-tag tag-purple"><i class="fa-solid fa-dollar-sign"></i> USD</span>
+                <span class="currency-tag tag-blue"><i class="fa-solid fa-sterling-sign"></i> GBP</span>
+                <span class="currency-tag tag-cyan"><i class="fa-solid fa-euro-sign"></i> EUR</span>
+                <span class="currency-tag tag-purple">zł PLN</span>
+            </div>
 
-<p class="subtitle">
-Professional invoicing solution for small businesses, freelancers and growing companies.
-</p>
+            <h1 class="hero-title">
+                Professional Invoicing <br>
+                <span class="gradient-text">for Small Businesses, Freelancers & Growing Companies</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                100% Offline. GDPR Compliant. Serverless Device Sync. <br>
+                Take absolute control of your client records and billing invoices, straight from your device.
+            </p>
 
-<div class="features">
+            <div class="hero-cta" id="download">
+                <a href="#download-windows" class="btn btn-primary btn-lg"><i class="fa-brands fa-windows"></i> Download for Windows</a>
+                <a href="#download-android" class="btn btn-secondary btn-lg"><i class="fa-brands fa-android"></i> Get for Android</a>
+            </div>
 
-<div class="feature">
-<h3>Store Data Locally</h3>
-<p>Your data stays on your device.</p>
-</div>
+            <!-- Dashboard Preview Container -->
+            <div class="hero-preview">
+                <div class="preview-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="preview-title">JamInvoice Workspace - Secure Offline Database</span>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-sidebar">
+                        <div class="sidebar-item active"><i class="fa-solid fa-chart-line"></i> Dashboard</div>
+                        <div class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</div>
+                        <div class="sidebar-item"><i class="fa-solid fa-users"></i> Clients</div>
+                        <div class="sidebar-item"><i class="fa-solid fa-building"></i> My Company</div>
+                        <div class="sidebar-item"><i class="fa-solid fa-gear"></i> Settings</div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-stats">
+                            <div class="preview-card">
+                                <span class="card-label">Revenue</span>
+                                <span class="card-val text-green">£18,450.00</span>
+                            </div>
+                            <div class="preview-card">
+                                <span class="card-label">Invoices</span>
+                                <span class="card-val text-blue">24 Active</span>
+                            </div>
+                            <div class="preview-card">
+                                <span class="card-label">Overdue</span>
+                                <span class="card-val text-red">£1,200.00</span>
+                            </div>
+                        </div>
+                        <div class="preview-chart-mock">
+                            <div class="chart-bar" style="height: 40%"></div>
+                            <div class="chart-bar" style="height: 65%"></div>
+                            <div class="chart-bar" style="height: 50%"></div>
+                            <div class="chart-bar" style="height: 85%"></div>
+                            <div class="chart-bar" style="height: 70%"></div>
+                            <div class="chart-bar" style="height: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="feature">
-<h3>No Client Limits</h3>
-<p>Add unlimited clients.</p>
-</div>
+    <!-- Core Features Grid -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title text-center">Built for Speed, Privacy, and Independence</h2>
+            <p class="section-subtitle text-center">No databases on external servers, no cloud subscriptions, and no tracking. Just professional tools.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="feature-card-title">100% Local & Offline</h3>
+                    <p class="feature-card-desc">All client records, finances, and invoices are saved securely on your device's local sandbox storage. Complete privacy and GDPR compliance out of the box.</p>
+                </div>
 
-<div class="feature">
-<h3>Unlimited PDFs</h3>
-<p>Create and export invoices without limits.</p>
-</div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        <i class="fa-solid fa-users-slash"></i>
+                    </div>
+                    <h3 class="feature-card-title">No Client & PDF Limits</h3>
+                    <p class="feature-card-desc">Create and manage unlimited clients, generate infinite PDF invoices and estimates. No paywalls, subscription models, or unexpected usage fees.</p>
+                </div>
 
-<div class="feature">
-<h3>Backup & Restore</h3>
-<p>Keep your business data safe.</p>
-</div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-cyan">
+                        <i class="fa-solid fa-rotate"></i>
+                    </div>
+                    <h3 class="feature-card-title">Serverless Cloud Sync</h3>
+                    <p class="feature-card-desc">Sync PC, phone, and tablet without database servers. Just set a shared sync folder (e.g. Google Drive, OneDrive, or Dropbox) and let JamInvoice auto-merge changes safely.</p>
+                </div>
 
-</div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h3 class="feature-card-title">Professional PDF Engine</h3>
+                    <p class="feature-card-desc">Generate premium, high-quality PDFs for print or email in seconds. Supports tax calculations, custom company logos, signatures, and localized currency options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="#" class="button">
-Coming Soon
-</a>
+    <!-- FAQ Accordion -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title text-center">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Where exactly is my invoicing data stored?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All data is saved securely in your device's local sandbox storage. Additionally, a safety-net auto-backup file named <code>jaminvoice_autobackup.json</code> is saved automatically in your local Documents folder every time you make changes.</p>
+                    </div>
+                </div>
 
-</section>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does the serverless device synchronization work?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simply select the same sync directory (e.g., a shared folder inside your OneDrive, Google Drive, or Dropbox client) in the app settings on all your devices. JamInvoice detects new updates and merges them on startup without sending data to any third-party servers.</p>
+                    </div>
+                </div>
 
-<div class="footer">
-© 2026 JamInvoice • A Product of J.A.M. Globe Ltd
-</div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What happens if I delete my app cache?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No need to worry. JamInvoice's auto-recovery system will automatically scan your user Documents folder on startup, find <code>jaminvoice_autobackup.json</code>, and restore all your invoices and company data instantly.</p>
+                    </div>
+                </div>
 
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Does the app require an active internet connection?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, JamInvoice operates 100% offline. An internet connection is only needed when your third-party cloud client (such as OneDrive or Google Drive) syncs files in the background to other devices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Roadmap -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <h2 class="section-title text-center">Upcoming Features</h2>
+            <p class="section-subtitle text-center">We are continuously building to make JamInvoice the ultimate offline workflow. Here is what is coming next:</p>
+            
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <h3>Direct Client Mailing</h3>
+                        <p>Send generated invoice and estimate PDFs directly to your client's email via SMTP server configuration, keeping details offline.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <h3>Receipt Scanning (OCR)</h3>
+                        <p>Convert photos of physical receipts into digital entries instantly using lightweight on-device OCR text recognition.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <h3>Custom PDF Themes</h3>
+                        <p>A wider gallery of professional PDF templates, colors, and layout configurations to fit every style of business branding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="assets/images/app_icon.png" alt="JamInvoice Logo" class="logo-img">
+                    <span class="logo-text">Jam<span class="highlight">Invoice</span></span>
+                </a>
+                <p class="footer-desc">Professional offline-first invoicing software designed to respect your data, time, and independence.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#download">Download</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Legal & Info</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="mailto:support@jaminvoice.com">Support Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p class="company-tagline">JamInvoice is a product of J.A.M. Globe Ltd</p>
+            <p class="copyright">&copy; 2026 J.A.M. Globe Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                icon.className = 'fa-solid fa-bars';
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuToggle.querySelector('i').className = 'fa-solid fa-bars';
+            });
+        });
+
+        // FAQ Accordion logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(i => i.classList.remove('active'));
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
