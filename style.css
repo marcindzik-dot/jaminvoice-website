@@ -151,25 +151,25 @@ body {
 .bp-11 { top: 90%; left: 90%; color: rgba(59, 130, 246, 0.18); font-size: 32px; animation-duration: 23s; animation-delay: -1s; }
 .bp-12 { top: 50%; left: 45%; color: rgba(123, 63, 242, 0.12); font-size: 26px; animation-duration: 31s; animation-delay: -9s; }
 
-/* Drifting Astronaut (Flat vector icon matching currency icons) */
+/* Drifting Astronaut (Real photo stylized with CSS filters to match currency particles) */
 .drifting-astronaut {
     position: fixed;
-    width: 60px; /* Small, floating like the currency icons */
+    width: 32px; /* Small, floating like the currency particles (24px-36px) */
     height: auto;
-    color: rgba(0, 200, 255, 0.15); /* soft glow neon cyan */
     left: 15%;
     top: 45%;
     z-index: -1;
     pointer-events: none;
     user-select: none;
     animation: astronaut-drift 35s infinite linear;
-    filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
 }
 
-.astronaut-svg {
+.astronaut-img-real {
     width: 100%;
     height: auto;
-    fill: currentColor;
+    display: block;
+    /* Stylize to match the app's floating currency icons (monochromatic cyan/blue glow, low opacity) */
+    filter: grayscale(1) sepia(1) hue-rotate(180deg) saturate(5) brightness(0.8) opacity(0.18) drop-shadow(0 0 4px rgba(0, 200, 255, 0.5));
 }
 
 /* Shooting Stars Background (falling stars) */
@@ -1070,8 +1070,8 @@ h1, h2, h3, h4 {
     }
 
     .drifting-astronaut {
-        width: 80px;
-        height: 80px;
+        width: 32px;
+        height: auto;
         top: 680px;
     }
 }
