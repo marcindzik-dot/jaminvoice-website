@@ -18,6 +18,21 @@
     <div class="space-bg"></div>
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
+    
+    <!-- Stars particles in background -->
+    <div class="stars-container">
+        <div class="star star-1"></div>
+        <div class="star star-2"></div>
+        <div class="star star-3"></div>
+        <div class="star star-4"></div>
+        <div class="star star-5"></div>
+        <div class="star star-6"></div>
+    </div>
+
+    <!-- Drifting Astronaut -->
+    <div class="drifting-astronaut">
+        <img src="assets/images/astronaut.png" alt="Astronaut floating in space">
+    </div>
 
     <!-- Header / Navigation -->
     <header class="header">
@@ -52,30 +67,47 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-container">
-            <!-- Currency symbols floating banner -->
-            <div class="currency-banner">
-                <span class="currency-tag tag-purple"><i class="fa-solid fa-dollar-sign"></i> USD</span>
-                <span class="currency-tag tag-blue"><i class="fa-solid fa-sterling-sign"></i> GBP</span>
-                <span class="currency-tag tag-cyan"><i class="fa-solid fa-euro-sign"></i> EUR</span>
-                <span class="currency-tag tag-purple">zł PLN</span>
+        <div class="container hero-cols-container">
+            <div class="hero-text-side">
+                <!-- Currency symbols floating banner -->
+                <div class="currency-banner">
+                    <span class="currency-tag tag-purple"><i class="fa-solid fa-dollar-sign"></i> USD</span>
+                    <span class="currency-tag tag-blue"><i class="fa-solid fa-sterling-sign"></i> GBP</span>
+                    <span class="currency-tag tag-cyan"><i class="fa-solid fa-euro-sign"></i> EUR</span>
+                    <span class="currency-tag tag-purple">zł PLN</span>
+                </div>
+
+                <h1 class="hero-title-left">
+                    Professional Invoicing <br>
+                    <span class="gradient-text">for Small Businesses, Freelancers & Growing Companies</span>
+                </h1>
+                
+                <p class="hero-subtitle-left">
+                    100% Offline. GDPR Compliant. Serverless Device Sync. <br>
+                    Take absolute control of your client records and billing invoices, straight from your device.
+                </p>
+
+                <div class="hero-cta-left" id="download">
+                    <a href="#download-windows" class="btn btn-primary btn-lg"><i class="fa-brands fa-windows"></i> Download for Windows</a>
+                    <a href="#download-android" class="btn btn-secondary btn-lg"><i class="fa-brands fa-android"></i> Get for Android</a>
+                </div>
             </div>
 
-            <h1 class="hero-title">
-                Professional Invoicing <br>
-                <span class="gradient-text">for Small Businesses, Freelancers & Growing Companies</span>
-            </h1>
-            
-            <p class="hero-subtitle">
-                100% Offline. GDPR Compliant. Serverless Device Sync. <br>
-                Take absolute control of your client records and billing invoices, straight from your device.
-            </p>
-
-            <div class="hero-cta" id="download">
-                <a href="#download-windows" class="btn btn-primary btn-lg"><i class="fa-brands fa-windows"></i> Download for Windows</a>
-                <a href="#download-android" class="btn btn-secondary btn-lg"><i class="fa-brands fa-android"></i> Get for Android</a>
+            <div class="hero-visual-side">
+                <!-- Glowing globe with drifting currencies -->
+                <div class="globe-wrapper">
+                    <div class="globe-radial-glow"></div>
+                    <img src="assets/images/globe.png" alt="JamInvoice Earth Globe" class="globe-img-floating">
+                    <!-- Floating currencies around globe -->
+                    <div class="drifting-symbol symbol-1">$</div>
+                    <div class="drifting-symbol symbol-2">€</div>
+                    <div class="drifting-symbol symbol-3">£</div>
+                    <div class="drifting-symbol symbol-4">zł</div>
+                </div>
             </div>
+        </div>
 
+        <div class="container">
             <!-- Dashboard Preview Container -->
             <div class="hero-preview">
                 <div class="preview-header">
