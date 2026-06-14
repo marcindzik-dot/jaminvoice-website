@@ -151,24 +151,46 @@ body {
 .bp-11 { top: 90%; left: 90%; color: rgba(59, 130, 246, 0.18); font-size: 32px; animation-duration: 23s; animation-delay: -1s; }
 .bp-12 { top: 50%; left: 45%; color: rgba(123, 63, 242, 0.12); font-size: 26px; animation-duration: 31s; animation-delay: -9s; }
 
-/* Drifting Astronaut */
+/* Drifting Astronaut (Flat vector icon matching currency icons) */
 .drifting-astronaut {
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    right: 6%;
-    top: 550px;
-    z-index: 5;
+    position: fixed;
+    font-size: 80px; /* Big premium vector representation */
+    color: rgba(0, 200, 255, 0.14); /* soft glow neon cyan */
+    text-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+    left: 10%;
+    top: 40%;
+    z-index: -1;
     pointer-events: none;
-    animation: astronaut-drift 15s ease-in-out infinite;
-    opacity: 0.75;
+    user-select: none;
+    animation: astronaut-drift 35s infinite linear;
 }
 
-.drifting-astronaut img {
+/* Shooting Stars Background (falling stars) */
+.shooting-star-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.25));
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
 }
+
+.shooting-star {
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(-45deg, rgba(255, 255, 255, 1), rgba(0, 200, 255, 0.45), rgba(0, 0, 0, 0));
+    filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.8));
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shooting-animation 12s infinite ease-in-out;
+}
+
+.ss-1 { top: 12%; left: 35%; animation-delay: 0s; }
+.ss-2 { top: 38%; left: 65%; animation-delay: 4s; animation-duration: 16s; }
+.ss-3 { top: 18%; left: 82%; animation-delay: 8s; animation-duration: 10s; }
 
 /* Typography Utility */
 h1, h2, h3, h4 {
@@ -863,8 +885,11 @@ h1, h2, h3, h4 {
 }
 
 @keyframes astronaut-drift {
-    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    50% { transform: translate(-25px, -35px) rotate(-15deg) scale(1.05); }
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(180px, -120px) rotate(90deg) scale(1.1); }
+    50% { transform: translate(320px, 40px) rotate(180deg) scale(0.9); }
+    75% { transform: translate(140px, 200px) rotate(270deg) scale(1.05); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
 }
 
 @keyframes twinkle {
@@ -874,14 +899,33 @@ h1, h2, h3, h4 {
 
 @keyframes drift-around {
     0% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(40px, -60px) rotate(120deg) scale(1.08); }
-    66% { transform: translate(-30px, 30px) rotate(240deg) scale(0.92); }
+    33% { transform: translate(80px, -100px) rotate(120deg) scale(1.08); }
+    66% { transform: translate(-60px, 80px) rotate(240deg) scale(0.92); }
     100% { transform: translate(0, 0) rotate(360deg); }
 }
 
 @keyframes subtle-bounce {
     0%, 100% { transform: translateY(0) scale(1); }
     50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes shooting-animation {
+    0% {
+        transform: translate(0, 0) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+    1% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-45deg) scale(1);
+    }
+    6% {
+        transform: translate(-400px, 400px) rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-400px, 400px) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
 }
 
 /* Media Queries (Responsiveness) */
