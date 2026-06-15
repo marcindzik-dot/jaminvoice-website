@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.5">
+    <link rel="stylesheet" href="style.css?v=1.6">
     <!-- Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -120,6 +120,7 @@
             <div class="hero-cta" id="download">
                 <a href="#download-windows" class="btn btn-primary btn-lg"><i class="fa-brands fa-windows"></i> Download for Windows</a>
                 <a href="#download-android" class="btn btn-secondary btn-lg"><i class="fa-brands fa-android"></i> Get for Android</a>
+                <a href="#waiting-list" class="btn btn-secondary btn-lg"><i class="fa-brands fa-apple"></i> Get for Apple</a>
             </div>
 
             <!-- Workspace Preview Dashboard -->
@@ -289,6 +290,31 @@
         </div>
     </section>
 
+    <!-- Join Beta Waiting List Section -->
+    <section class="waiting-list-section" id="waiting-list">
+        <div class="container">
+            <div class="waiting-list-card">
+                <div class="waiting-list-glow"></div>
+                <h2 class="section-title text-center">Join the Beta Waiting List</h2>
+                <p class="section-subtitle text-center">
+                    JamInvoice operates 100% offline. Sign up below to get early access to our beta sync features, and be notified the moment the Apple (iOS & macOS) version goes live.
+                </p>
+                
+                <form id="betaForm" class="waiting-list-form">
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="betaEmail" placeholder="Enter your email address" required autocomplete="email">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Join Waiting List <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+                <div id="formSuccess" class="form-success-message" style="display: none;">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Thank you! You've been added to our waiting list. We'll keep you updated!</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-container">
@@ -353,12 +379,34 @@
                 
                 // Close all other items
                 faqItems.forEach(i => i.classList.remove('active'));
-                
                 if (!isActive) {
                     item.classList.add('active');
                 }
             });
         });
+        // Beta waiting list form logic
+        const betaForm = document.getElementById('betaForm');
+        const formSuccess = document.getElementById('formSuccess');
+        if (betaForm) {
+            betaForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('betaEmail').value;
+                
+                // In production, you would send this to your email list manager or server.
+                // For demonstration, we save it locally in localStorage and show a success message.
+                console.log('Beta Waitlist Signup:', email);
+                try {
+                    const signups = JSON.parse(localStorage.getItem('beta_signups') || '[]');
+                    signups.push({ email: email, timestamp: new Date().toISOString() });
+                    localStorage.setItem('beta_signups', JSON.stringify(signups));
+                } catch(err) {
+                    // Ignore localStorage issues
+                }
+                
+                betaForm.style.display = 'none';
+                formSuccess.style.display = 'flex';
+            });
+        }
     </script>
 </body>
 </html>
