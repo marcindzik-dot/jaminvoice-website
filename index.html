@@ -8,8 +8,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.1">
     <!-- Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -106,6 +106,11 @@
             <!-- 3. Tagline (crisp glowing cyan) -->
             <div class="app-tagline">INVOICES &bull; ESTIMATES &bull; ANYWHERE</div>
             
+            <!-- Hero Selling Subtitle (Handwritten font) -->
+            <p class="hero-selling-subtitle">
+                Professional invoicing software for freelancers and small businesses.
+            </p>
+            
             <!-- 4. Checkmark Icon Graphic (bottom logo part) -->
             <img src="assets/images/logo_checkmark_icon.png" alt="JamInvoice Checkmark Logo" class="app-logo-checkmark">
 
@@ -151,45 +156,319 @@
             </div>
 
             <!-- Workspace Preview Dashboard -->
+            <!-- Workspace Preview Gallery (See JamInvoice in Action) -->
+            <h2 class="hero-preview-title">See JamInvoice in Action</h2>
             <div class="hero-preview">
                 <div class="preview-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="preview-title">JamInvoice Workspace - Secure Offline Database</span>
+                    <div class="window-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="preview-tabs">
+                        <button class="preview-tab active" data-tab="dashboard">Dashboard</button>
+                        <button class="preview-tab" data-tab="creator">Invoice Creator</button>
+                        <button class="preview-tab" data-tab="pdf">PDF Preview</button>
+                        <button class="preview-tab" data-tab="clients">Client Management</button>
+                        <button class="preview-tab" data-tab="settings">Company Settings</button>
+                    </div>
                 </div>
                 <div class="preview-body">
-                    <div class="preview-sidebar">
-                        <div class="sidebar-item active"><i class="fa-solid fa-chart-line"></i> Dashboard</div>
-                        <div class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</div>
-                        <div class="sidebar-item"><i class="fa-solid fa-users"></i> Clients</div>
-                        <div class="sidebar-item"><i class="fa-solid fa-building"></i> My Company</div>
-                        <div class="sidebar-item"><i class="fa-solid fa-gear"></i> Settings</div>
-                    </div>
-                    <div class="preview-content">
-                        <div class="preview-stats">
-                            <div class="preview-card">
-                                <span class="card-label">Revenue</span>
-                                <span class="card-val text-green">£18,450.00</span>
+                    <!-- PANEL 1: DASHBOARD -->
+                    <div class="preview-panel active" id="panel-dashboard">
+                        <div class="preview-sidebar">
+                            <div class="sidebar-item active"><i class="fa-solid fa-chart-line"></i> Dashboard</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-users"></i> Clients</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-building"></i> My Company</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-gear"></i> Settings</div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-stats">
+                                <div class="preview-card">
+                                    <span class="card-label">Revenue</span>
+                                    <span class="card-val text-green">£18,450.00</span>
+                                </div>
+                                <div class="preview-card">
+                                    <span class="card-label">Invoices</span>
+                                    <span class="card-val text-blue">24 Active</span>
+                                </div>
+                                <div class="preview-card">
+                                    <span class="card-label">Overdue</span>
+                                    <span class="card-val text-red">£1,200.00</span>
+                                </div>
                             </div>
-                            <div class="preview-card">
-                                <span class="card-label">Invoices</span>
-                                <span class="card-val text-blue">24 Active</span>
-                            </div>
-                            <div class="preview-card">
-                                <span class="card-label">Overdue</span>
-                                <span class="card-val text-red">£1,200.00</span>
+                            <div class="preview-chart-mock">
+                                <div class="chart-bar" style="height: 40%"></div>
+                                <div class="chart-bar" style="height: 65%"></div>
+                                <div class="chart-bar" style="height: 50%"></div>
+                                <div class="chart-bar" style="height: 85%"></div>
+                                <div class="chart-bar" style="height: 70%"></div>
+                                <div class="chart-bar" style="height: 95%"></div>
                             </div>
                         </div>
-                        <div class="preview-chart-mock">
-                            <div class="chart-bar" style="height: 40%"></div>
-                            <div class="chart-bar" style="height: 65%"></div>
-                            <div class="chart-bar" style="height: 50%"></div>
-                            <div class="chart-bar" style="height: 85%"></div>
-                            <div class="chart-bar" style="height: 70%"></div>
-                            <div class="chart-bar" style="height: 95%"></div>
+                    </div>
+
+                    <!-- PANEL 2: INVOICE CREATOR -->
+                    <div class="preview-panel" id="panel-creator" style="display: none;">
+                        <div class="preview-sidebar">
+                            <div class="sidebar-item"><i class="fa-solid fa-chart-line"></i> Dashboard</div>
+                            <div class="sidebar-item active"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-users"></i> Clients</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-building"></i> My Company</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-gear"></i> Settings</div>
+                        </div>
+                        <div class="preview-content editor-layout">
+                            <div class="editor-header">
+                                <h4>New Invoice #INV-2026-042</h4>
+                                <span class="badge draft">Draft</span>
+                            </div>
+                            <div class="editor-fields">
+                                <div class="field-row">
+                                    <div class="field-group">
+                                        <label>Select Client</label>
+                                        <div class="mock-input">Acme Corporation Ltd</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Issue Date</label>
+                                        <div class="mock-input">2026-06-16</div>
+                                    </div>
+                                </div>
+                                <div class="field-group">
+                                    <label>Invoice Items</label>
+                                    <div class="mock-table">
+                                        <div class="table-header">
+                                            <span>Description</span>
+                                            <span>Qty</span>
+                                            <span>Price</span>
+                                            <span>Total</span>
+                                        </div>
+                                        <div class="table-row">
+                                            <span>Freelance Software Consulting (V3 Launch)</span>
+                                            <span>16 hrs</span>
+                                            <span>£85.00</span>
+                                            <span>£1,360.00</span>
+                                        </div>
+                                        <div class="table-row">
+                                            <span>Server Environment Setup & Docker Config</span>
+                                            <span>1</span>
+                                            <span>£450.00</span>
+                                            <span>£450.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="editor-summary">
+                                    <span>Subtotal: £1,810.00</span>
+                                    <span class="total-highlight">Total Due: £1,810.00</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- PANEL 3: PDF PREVIEW -->
+                    <div class="preview-panel" id="panel-pdf" style="display: none;">
+                        <div class="preview-pdf-container">
+                            <div class="pdf-page">
+                                <div class="pdf-header">
+                                    <div class="pdf-company-info">
+                                        <span class="pdf-company-name">J.A.M. GLOBE LTD</span>
+                                        <span>VAT No: PL5252874112</span>
+                                        <span>hello@jaminvoice.com</span>
+                                    </div>
+                                    <div class="pdf-logo-placeholder">
+                                        <div class="mock-logo-box">JAM</div>
+                                    </div>
+                                </div>
+                                <div class="pdf-meta">
+                                    <div class="meta-block">
+                                        <strong>INVOICE TO:</strong>
+                                        <span>Acme Corporation Ltd</span>
+                                        <span>123 Innovation Way, London</span>
+                                    </div>
+                                    <div class="meta-block right">
+                                        <strong>INVOICE DETAILS:</strong>
+                                        <span>Invoice No: #INV-2026-042</span>
+                                        <span>Date: June 16, 2026</span>
+                                        <span>Due Date: June 30, 2026</span>
+                                    </div>
+                                </div>
+                                <table class="pdf-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th class="text-right">Qty</th>
+                                            <th class="text-right">Rate</th>
+                                            <th class="text-right">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Freelance Software Consulting (V3 Launch)</td>
+                                            <td class="text-right">16</td>
+                                            <td class="text-right">£85.00</td>
+                                            <td class="text-right">£1,360.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Server Environment Setup & Docker Config</td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">£450.00</td>
+                                            <td class="text-right">£450.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="pdf-totals">
+                                    <div class="totals-row">
+                                        <span>Subtotal:</span>
+                                        <span>£1,810.00</span>
+                                    </div>
+                                    <div class="totals-row grand-total">
+                                        <span>Total Due:</span>
+                                        <span>£1,810.00</span>
+                                    </div>
+                                </div>
+                                <div class="pdf-footer">
+                                    <p>Thank you for your business. Payment terms: Net 14. JamInvoice operates 100% offline.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 4: CLIENTS -->
+                    <div class="preview-panel" id="panel-clients" style="display: none;">
+                        <div class="preview-sidebar">
+                            <div class="sidebar-item"><i class="fa-solid fa-chart-line"></i> Dashboard</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</div>
+                            <div class="sidebar-item active"><i class="fa-solid fa-users"></i> Clients</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-building"></i> My Company</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-gear"></i> Settings</div>
+                        </div>
+                        <div class="preview-content clients-layout">
+                            <div class="clients-header">
+                                <h4>Client Database</h4>
+                                <button class="btn-mock-add"><i class="fa-solid fa-plus"></i> Add Client</button>
+                            </div>
+                            <div class="clients-list">
+                                <div class="client-table">
+                                    <div class="table-header">
+                                        <span>Company Name</span>
+                                        <span>Contact Email</span>
+                                        <span>Active Invoices</span>
+                                        <span>Status</span>
+                                    </div>
+                                    <div class="table-row">
+                                        <strong>Acme Corporation Ltd</strong>
+                                        <span>billing@acme.com</span>
+                                        <span>12</span>
+                                        <span class="status-active">Active</span>
+                                    </div>
+                                    <div class="table-row">
+                                        <strong>Starlight Creative</strong>
+                                        <span>hello@starlight.co</span>
+                                        <span>8</span>
+                                        <span class="status-active">Active</span>
+                                    </div>
+                                    <div class="table-row">
+                                        <strong>Global Logistics SA</strong>
+                                        <span>finance@globallog.com</span>
+                                        <span>3</span>
+                                        <span class="status-inactive">Inactive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 5: SETTINGS -->
+                    <div class="preview-panel" id="panel-settings" style="display: none;">
+                        <div class="preview-sidebar">
+                            <div class="sidebar-item"><i class="fa-solid fa-chart-line"></i> Dashboard</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-file-invoice-dollar"></i> Invoices</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-users"></i> Clients</div>
+                            <div class="sidebar-item"><i class="fa-solid fa-building"></i> My Company</div>
+                            <div class="sidebar-item active"><i class="fa-solid fa-gear"></i> Settings</div>
+                        </div>
+                        <div class="preview-content settings-layout">
+                            <div class="settings-header">
+                                <h4>System Settings</h4>
+                            </div>
+                            <div class="settings-groups">
+                                <div class="settings-group">
+                                    <h5>Offline Backup & Cloud Sync</h5>
+                                    <div class="settings-option">
+                                        <label>Local Shared Directory (e.g. OneDrive, Dropbox)</label>
+                                        <div class="mock-input select-path">C:\Users\User\Dropbox\JamInvoice_Sync <i class="fa-solid fa-folder-open"></i></div>
+                                    </div>
+                                    <div class="settings-option toggle-option">
+                                        <div class="toggle-text">
+                                            <h6>Auto-Sync on Startup</h6>
+                                            <p>Automatically scan and merge invoice JSON changes from sync directory</p>
+                                        </div>
+                                        <div class="mock-switch active"></div>
+                                    </div>
+                                </div>
+                                <div class="settings-group">
+                                    <h5>PDF Engine Configuration</h5>
+                                    <div class="settings-option">
+                                        <label>Default Page Margins (mm)</label>
+                                        <div class="mock-input">15</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Is It For Section -->
+    <section class="perfect-for-section" id="perfect-for">
+        <div class="container">
+            <h2 class="section-title text-center">Perfect For</h2>
+            <p class="section-subtitle text-center">JamInvoice is tailored for individuals and businesses who value simplicity, speed, and absolute ownership of their financial records.</p>
+            
+            <div class="perfect-for-grid">
+                <div class="perfect-for-card">
+                    <div class="perfect-for-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Freelancers</h3>
+                    <p>Track consultants, writers, developers, designers, and creatives invoicing clients globally.</p>
+                </div>
+                <div class="perfect-for-card">
+                    <div class="perfect-for-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Self-Employed Professionals</h3>
+                    <p>Sole traders, practitioners, and independent operators running solo businesses.</p>
+                </div>
+                <div class="perfect-for-card">
+                    <div class="perfect-for-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Tradespeople</h3>
+                    <p>Plumbers, electricians, builders, and technicians who need professional quotes and estimates on-site.</p>
+                </div>
+                <div class="perfect-for-card">
+                    <div class="perfect-for-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Small Businesses</h3>
+                    <p>Local shops, service providers, and startups managing business invoicing without expensive overhead.</p>
+                </div>
+                <div class="perfect-for-card">
+                    <div class="perfect-for-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Contractors</h3>
+                    <p>Project contractors, engineers, and builders billing regularly on defined contract terms.</p>
+                </div>
+                <div class="perfect-for-card">
+                    <div class="perfect-for-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Consultants</h3>
+                    <p>Advisors, strategists, and experts seeking quick, professional invoicing and client estimates.</p>
                 </div>
             </div>
         </div>
@@ -285,32 +564,174 @@
         </div>
     </section>
 
+    <!-- Trust / Why Choose JamInvoice Section -->
+    <section class="trust-section" id="why-choose">
+        <div class="container">
+            <h2 class="section-title text-center">Why Choose JamInvoice?</h2>
+            <p class="section-subtitle text-center">Built for reliability, privacy, and speed. We believe in software that belongs to you, not a subscription service.</p>
+            
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h3>100% Offline</h3>
+                        <p>Run entirely on your device. Zero dependency on cloud databases or external hosting services.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h3>GDPR Friendly</h3>
+                        <p>Your client data never leaves your device. Built-in compliance with zero data privacy worries.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h3>No Monthly Subscription</h3>
+                        <p>Buy once or use free. No recurring fees, surprise charges, or hidden paywalls.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h3>Unlimited Clients</h3>
+                        <p>Grow your business without limits. Add as many company and client contacts as you need.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h3>Unlimited Invoices</h3>
+                        <p>Create, manage, and download infinite invoices and estimates at no extra cost.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h3>Professional PDF Export</h3>
+                        <p>Generate highly-polished invoice PDFs styled instantly with your logo, fonts, and taxes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Future Roadmap -->
     <section class="roadmap" id="roadmap">
         <div class="container">
-            <h2 class="section-title text-center">Upcoming Features</h2>
-            <p class="section-subtitle text-center">We are continuously building to make JamInvoice the ultimate offline workflow. Here is what is coming next:</p>
+            <h2 class="section-title text-center">Project Roadmap</h2>
+            <p class="section-subtitle text-center">Follow our development progress as we build the ultimate offline-first invoicing ecosystem.</p>
             
-            <div class="roadmap-timeline">
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h3>Direct Client Mailing</h3>
-                        <p>Send generated invoice and estimate PDFs directly to your client's email via SMTP server configuration, keeping details offline.</p>
+            <div class="roadmap-progress-dashboard">
+                <!-- Item 1 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-circle-check text-green"></i> Dashboard</span>
+                        <span class="progress-percentage-label">100%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill completed" style="width: 100%"></div>
                     </div>
                 </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h3>Receipt Scanning (OCR)</h3>
-                        <p>Convert photos of physical receipts into digital entries instantly using lightweight on-device OCR text recognition.</p>
+                <!-- Item 2 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-circle-check text-green"></i> Invoices & Estimates</span>
+                        <span class="progress-percentage-label">100%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill completed" style="width: 100%"></div>
                     </div>
                 </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <h3>Custom PDF Themes</h3>
-                        <p>A wider gallery of professional PDF templates, colors, and layout configurations to fit every style of business branding.</p>
+                <!-- Item 3 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-circle-check text-green"></i> PDF Export Engine</span>
+                        <span class="progress-percentage-label">100%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill completed" style="width: 100%"></div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-circle-check text-green"></i> Client Database</span>
+                        <span class="progress-percentage-label">100%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill completed" style="width: 100%"></div>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-rotate text-blue"></i> Android App</span>
+                        <span class="progress-percentage-label font-blue">80%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill ongoing-blue" style="width: 80%"></div>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-rotate text-purple"></i> Cloud Sync (Device Sync)</span>
+                        <span class="progress-percentage-label font-purple">70%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill ongoing-purple" style="width: 70%"></div>
+                    </div>
+                </div>
+                <!-- Item 7 -->
+                <div class="progress-bar-item">
+                    <div class="progress-bar-info">
+                        <span class="progress-feature-name"><i class="fa-solid fa-rotate text-cyan"></i> iOS App</span>
+                        <span class="progress-percentage-label font-cyan">60%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill ongoing-cyan" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Story Section -->
+    <section class="founder-story-section" id="founder-story">
+        <div class="container">
+            <div class="founder-story-card">
+                <div class="founder-story-glow"></div>
+                <div class="founder-story-content">
+                    <div class="founder-quote-mark">“</div>
+                    <h2 class="founder-story-title">Founder Story</h2>
+                    <p class="founder-quote-text">
+                        JamInvoice started from a simple idea: <strong>Small businesses shouldn't need expensive subscriptions just to create professional invoices.</strong>
+                    </p>
+                    <p class="founder-quote-text">
+                        We're building a fast, offline-first solution that gives users full control over their data, keeping your financial records exactly where they belong—on your own hardware.
+                    </p>
+                    <div class="founder-profile">
+                        <div class="founder-avatar">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <div class="founder-meta">
+                            <span class="founder-name">The JamInvoice Team</span>
+                            <span class="founder-role">J.A.M. Globe Ltd.</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -326,6 +747,11 @@
                 <p class="section-subtitle text-center">
                     JamInvoice operates 100% offline. Sign up below to get early access to our beta sync features, and be notified the moment the Apple (iOS & macOS) version goes live.
                 </p>
+                
+                <div class="waitlist-social-proof">
+                    <span class="pulse-dot"></span>
+                    <span class="proof-text">Join <strong>142 other freelancers & business owners</strong> on the waiting list</span>
+                </div>
                 
                 <form id="betaForm" class="waiting-list-form">
                     <div class="input-group">
@@ -419,7 +845,7 @@
         </div>
         <div class="footer-bottom text-center">
             <p class="company-tagline">JamInvoice is a product of J.A.M. Globe Ltd</p>
-            <p class="copyright">&copy; 2026 J.A.M. Globe Ltd. All rights reserved.</p>
+            <p class="copyright">&copy; 2025 J.A.M. Globe Ltd. All rights reserved.</p>
         </div>
     </footer>
 
@@ -461,6 +887,32 @@
                 }
             });
         });
+
+        // Interactive Preview Tabs logic
+        const tabs = document.querySelectorAll('.preview-tab');
+        const panels = document.querySelectorAll('.preview-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+
+                // Toggle tabs active state
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Toggle panels display
+                panels.forEach(panel => {
+                    if (panel.id === `panel-${targetTab}`) {
+                        panel.style.display = targetTab === 'pdf' ? 'block' : 'flex';
+                        panel.classList.add('active');
+                    } else {
+                        panel.style.display = 'none';
+                        panel.classList.remove('active');
+                    }
+                });
+            });
+        });
+
         // Beta waiting list form logic
         const betaForm = document.getElementById('betaForm');
         const formSuccess = document.getElementById('formSuccess');
