@@ -1432,6 +1432,7 @@ h1, h2, h3, h4 {
     text-align: center;
     transition: var(--transition-smooth);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
 }
 
 .contact-method-item:hover {
@@ -1486,7 +1487,7 @@ h1, h2, h3, h4 {
     word-break: break-all;
 }
 
-.contact-method-email:hover {
+.contact-method-item:hover .contact-method-email {
     color: var(--neon-cyan);
 }
 
