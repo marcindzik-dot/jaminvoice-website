@@ -832,11 +832,27 @@
                         <i class="fa-solid fa-envelope input-icon"></i>
                         <input type="email" id="betaEmail" placeholder="Enter your email address" required autocomplete="email">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">Join Waiting List <i class="fa-solid fa-paper-plane"></i></button>
+                    <div class="form-validation-error" id="emailValidationError" style="display: none;">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>Please enter a valid email address.</span>
+                    </div>
+
+                    <button type="submit" id="betaSubmitBtn" class="btn btn-primary btn-lg">
+                        <span class="btn-text">Join Waiting List <i class="fa-solid fa-paper-plane"></i></span>
+                        <span class="btn-loading" style="display: none;"><i class="fa-solid fa-spinner fa-spin"></i> Submitting...</span>
+                    </button>
                 </form>
-                <div id="formSuccess" class="form-success-message" style="display: none;">
+                <div id="formSuccess" class="form-feedback-message form-success-message" style="display: none;">
                     <i class="fa-solid fa-circle-check"></i>
                     <span>Thank you! You've been added to our waiting list. We'll keep you updated!</span>
+                </div>
+                <div id="formDuplicate" class="form-feedback-message form-duplicate-message" style="display: none;">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>You're already on the waiting list! We'll notify you when the beta is ready.</span>
+                </div>
+                <div id="formError" class="form-feedback-message form-error-message" style="display: none;">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <span>Something went wrong. Please try again later.</span>
                 </div>
             </div>
         </div>
@@ -923,9 +939,38 @@
         </div>
     </footer>
 
+    <!-- Firebase SDK (Modular v9+ via CDN compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
     <!-- Interactive Scripts -->
     <script>
+        // ============================================================
+        // FIREBASE CONFIGURATION
+        // ============================================================
+        // TODO: Replace with your actual Firebase project credentials.
+        // Create a free project at https://console.firebase.google.com
+        // 1. Go to Project Settings > General > Your apps > Web app
+        // 2. Copy the firebaseConfig object and paste below
+        // ============================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDRbfCig08h92tjswSUo6o_5khHDYU8H6w",
+            authDomain: "jaminvoice-4a28c.firebaseapp.com",
+            projectId: "jaminvoice-4a28c",
+            storageBucket: "jaminvoice-4a28c.firebasestorage.app",
+            messagingSenderId: "23698521973",
+            appId: "1:23698521973:web:1a4494496c42c25ab6dd3c",
+            measurementId: "G-5WZXKES54N"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const WAITLIST_COLLECTION = 'beta_waitlist';
+
+        // ============================================================
         // Mobile menu toggle
+        // ============================================================
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         menuToggle.addEventListener('click', () => {
@@ -947,14 +992,14 @@
             });
         });
 
+        // ============================================================
         // FAQ Accordion logic
+        // ============================================================
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
-                // Close all other items
                 faqItems.forEach(i => i.classList.remove('active'));
                 if (!isActive) {
                     item.classList.add('active');
@@ -962,19 +1007,17 @@
             });
         });
 
+        // ============================================================
         // Interactive Preview Tabs logic
+        // ============================================================
         const tabs = document.querySelectorAll('.preview-tab');
         const panels = document.querySelectorAll('.preview-panel');
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const targetTab = tab.getAttribute('data-tab');
-
-                // Toggle tabs active state
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
-                // Toggle panels display
                 panels.forEach(panel => {
                     if (panel.id === `panel-${targetTab}`) {
                         panel.style.display = targetTab === 'pdf' ? 'block' : 'flex';
@@ -987,27 +1030,115 @@
             });
         });
 
-        // Beta waiting list form logic
+        // ============================================================
+        // BETA WAITING LIST — FORM HANDLER
+        // ============================================================
         const betaForm = document.getElementById('betaForm');
         const formSuccess = document.getElementById('formSuccess');
+        const formDuplicate = document.getElementById('formDuplicate');
+        const formError = document.getElementById('formError');
+        const emailValidationError = document.getElementById('emailValidationError');
+        const betaSubmitBtn = document.getElementById('betaSubmitBtn');
+        let isSubmitting = false; // Double-click prevention lock
+
+        // Email validation regex (RFC 5322 simplified)
+        function isValidEmail(email) {
+            const re = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+            return re.test(email);
+        }
+
+        // Hide all feedback messages
+        function hideAllFeedback() {
+            formSuccess.style.display = 'none';
+            formDuplicate.style.display = 'none';
+            formError.style.display = 'none';
+            emailValidationError.style.display = 'none';
+        }
+
+        // Set loading state
+        function setLoading(loading) {
+            const btnText = betaSubmitBtn.querySelector('.btn-text');
+            const btnLoading = betaSubmitBtn.querySelector('.btn-loading');
+            if (loading) {
+                betaSubmitBtn.disabled = true;
+                betaSubmitBtn.classList.add('btn-disabled');
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline-flex';
+            } else {
+                betaSubmitBtn.disabled = false;
+                betaSubmitBtn.classList.remove('btn-disabled');
+                btnText.style.display = 'inline-flex';
+                btnLoading.style.display = 'none';
+            }
+        }
+
         if (betaForm) {
-            betaForm.addEventListener('submit', (e) => {
+            betaForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const email = document.getElementById('betaEmail').value;
-                
-                // In production, you would send this to your email list manager or server.
-                // For demonstration, we save it locally in localStorage and show a success message.
-                console.log('Beta Waitlist Signup:', email);
-                try {
-                    const signups = JSON.parse(localStorage.getItem('beta_signups') || '[]');
-                    signups.push({ email: email, timestamp: new Date().toISOString() });
-                    localStorage.setItem('beta_signups', JSON.stringify(signups));
-                } catch(err) {
-                    // Ignore localStorage issues
+
+                // Double-click prevention
+                if (isSubmitting) return;
+
+                hideAllFeedback();
+
+                const emailInput = document.getElementById('betaEmail');
+                const email = emailInput.value.trim().toLowerCase();
+
+                // Validate email format
+                if (!email || !isValidEmail(email)) {
+                    emailValidationError.style.display = 'flex';
+                    emailInput.focus();
+                    console.warn('[WAITLIST:VALIDATION] Invalid email format:', email);
+                    return;
                 }
-                
-                betaForm.style.display = 'none';
-                formSuccess.style.display = 'flex';
+
+                isSubmitting = true;
+                setLoading(true);
+
+                try {
+                    // Use email as document ID (lowercased) for natural deduplication
+                    const docRef = db.collection(WAITLIST_COLLECTION).doc(email);
+                    
+                    // Write directly. Under Firestore rules:
+                    // - If document doesn't exist, it is a create operation (allowed).
+                    // - If document exists, it is an update operation (denied).
+                    await docRef.set({
+                        email: email,
+                        registeredAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        source: 'website',
+                        status: 'active',
+                        userAgent: navigator.userAgent || 'unknown',
+                        referrer: document.referrer || 'direct'
+                    });
+
+                    console.info('[WAITLIST:SUCCESS] New signup stored:', email);
+                    betaForm.style.display = 'none';
+                    formSuccess.style.display = 'flex';
+                } catch (err) {
+                    if (err.code === 'permission-denied') {
+                        // Duplicate signup (creation blocked because document already exists and updates are denied)
+                        console.info('[WAITLIST:DUPLICATE] Email already registered (write denied):', email);
+                        betaForm.style.display = 'none';
+                        formDuplicate.style.display = 'flex';
+                    } else {
+                        // General network/configuration error
+                        console.error('[WAITLIST:ERROR] Signup failed:', err.message || err);
+                        formError.style.display = 'flex';
+
+                        // Fallback: save to localStorage as backup
+                        try {
+                            const fallback = JSON.parse(localStorage.getItem('beta_signups_fallback') || '[]');
+                            fallback.push({ email: email, timestamp: new Date().toISOString(), error: err.message });
+                            localStorage.setItem('beta_signups_fallback', JSON.stringify(fallback));
+                            console.warn('[WAITLIST:FALLBACK] Saved to localStorage as backup');
+                        } catch (lsErr) {
+                            console.error('[WAITLIST:FALLBACK_FAILED] localStorage also failed:', lsErr.message);
+                        }
+                    }
+                } finally {
+                    isSubmitting = false;
+                    setLoading(false);
+                }
             });
         }
     </script>
